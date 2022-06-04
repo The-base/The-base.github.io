@@ -5,8 +5,9 @@ const theme = extendTheme({
     colors: {
         white: '#ffffff',
         gray: '#dddddd',
-        primary: '#0070f3',
-        secondary: '#ff3344',
+        primaryBlue: '#326bfb',
+        secondaryPurple: '##8f7cfe',
+        tertiaryBlue: '#e0edff'
     },
 
     fontSizes: {
