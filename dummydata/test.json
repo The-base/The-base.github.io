@@ -1,0 +1,13 @@
+[
+    {
+     "price": "0.00",
+     "box-name": "Box 1",
+     "box-size": {
+        "width": "10",
+        "height": "10",
+        "length": "10"
+     },
+     "added-weight": "0.00"
+    }
+
+]
