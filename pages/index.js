@@ -37,7 +37,6 @@ const HomePage = () => {
 
     return (
       <MainLayout>
-        {/* <Flex h='100%' direction='column'> */}
           <BoxInput
             height={height}
             width={width}
@@ -54,7 +53,6 @@ const HomePage = () => {
             <BoxEntry bg='selectionBlue' price='$5.99' name='Box 1' height='12"' width='15"' depth='11"'/>
             <BoxEntry bg='secondaryBlue' price='$6.99' name='Box 2' height='12"' width='15"' depth='11"'/>
           </BoxResults>
-        {/* </Flex> */}
       </MainLayout>
   )}
   
