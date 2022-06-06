@@ -5,7 +5,6 @@ import { Boxes } from '../dummydata/Boxes.js';
 import App from '../pages/_app';
 import BoxResults from '../components/BoxResults.js';
 import BoxEntry from '../components/BoxEntry';
-import { Flex } from "@chakra-ui/react";
 
 
 const HomePage = () => {
