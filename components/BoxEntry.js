@@ -1,7 +1,9 @@
 import React from "react";
 import { Flex, Text, Button } from "@chakra-ui/react";
 
-const BoxEntry = ({ bg, price, name, height, width, depth }) => {
+const BoxEntry = ({bg, price, name, height, width, depth}) => {
+
+    const boxProps = [bg, price, name, height, width, depth]
     const featureInputProps = {
         bg: 'white',
         color: '#000',
@@ -35,21 +37,11 @@ const BoxEntry = ({ bg, price, name, height, width, depth }) => {
             {...buttonProps}
         >
             <Flex>
-                <Flex {...featureInputProps}>
-                    {price}
+                {boxProps.map((feature, i) => (
+                <Flex {...featureInputProps} key={i}>
+                    {feature}
                 </Flex>
-                <Flex {...featureInputProps}>
-                    {name}
-                </Flex>
-                <Flex {...featureInputProps}>
-                    {height}
-                </Flex>
-                <Flex {...featureInputProps}>
-                    {width}
-                </Flex>
-                <Flex {...featureInputProps}>
-                    {depth}
-                </Flex>
+                ))}
             </Flex>
             <Text 
                 fontSize='16px'

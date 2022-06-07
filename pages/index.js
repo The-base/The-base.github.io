@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MainLayout from '../components/MainLayout.js';
 import BoxInput from '../components/BoxInput';
-import { Boxes } from '../dummydata/Boxes.js';
+import { Boxes } from '../data/Boxes.js';
 import App from '../pages/_app';
 import BoxResults from '../components/BoxResults.js';
 import BoxEntry from '../components/BoxEntry';
@@ -20,19 +20,28 @@ const HomePage = () => {
 
   //  const SelectBoxes =  React.useEvent(() => {
 
-  //   let newBoxes = []
+    let newBoxes = []
 
-  //   Boxes.forEach((box) => {
-  //     if (box.height >= height && box.width >= width && box.depth >= depth) {
-  //       newBox.push(box.name)
-  //     }
-  //   })
+    Boxes.forEach((box) => {
+      // if (box.height >= height && box.width >= width && box.depth >= depth) {
+      //   newBox.push(box.name)
+      // }
+      if (box.height >= height && box.width >= width && box.depth >= depth) {
+        newBoxes.push([box.name, box.price, box.width, box.height, box.depth])
+      }
+    })
+
+    let limitResult = newBoxes.slice(0,3)
     
-    
-  //   })
+    console.log('limitResult', limitResult)
+    // })
 
+    const handleFind = () => {
 
-    // console.log('HomePage', Boxes)
+    }
+    const handleReset = () => {
+
+    }
 
     return (
       <MainLayout>
@@ -43,14 +52,13 @@ const HomePage = () => {
             handleHeight={handleHeight}
             handleWidth={handleWidth}
             handleDepth={handleDepth}
-            handleFind={() => console.log('find this')}
-            handleReset={() => console.log('reset fields')}
+            handleFind={handleFind}
+            handleReset={handleReset}
           />
           <BoxResults>
-            {/* map function here that uses BoxEntry component */}
-            {/* two examples below */}
-            <BoxEntry bg='selectionBlue' price='$5.99' name='Box 1' height='12"' width='15"' depth='11"'/>
-            <BoxEntry bg='secondaryBlue' price='$6.99' name='Box 2' height='12"' width='15"' depth='11"'/>
+            {limitResult.flatMap((box, i) => (
+              <BoxEntry key={i} bg='selectionBlue' price={box.price} name={box.name} height={box.height} width={box.width} depth={box.depth}/>
+            ))}
           </BoxResults>
       </MainLayout>
   )}
