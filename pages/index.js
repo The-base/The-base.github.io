@@ -27,7 +27,8 @@ const HomePage = () => {
       //   newBox.push(box.name)
       // }
       if (box.height >= height && box.width >= width && box.depth >= depth) {
-        newBoxes.push([box.name, box.price, box.width, box.height, box.depth])
+        newBoxes.push(box)
+        // newBoxes.push([box.name, box.price, box.width, box.height, box.depth])
       }
     })
 
@@ -40,7 +41,9 @@ const HomePage = () => {
 
     }
     const handleReset = () => {
-
+      setHeight('')
+      setWidth('')
+      setDepth('')
     }
 
     return (
@@ -57,7 +60,7 @@ const HomePage = () => {
           />
           <BoxResults>
             {limitResult.flatMap((box, i) => (
-              <BoxEntry key={i} bg='selectionBlue' price={box.price} name={box.name} height={box.height} width={box.width} depth={box.depth}/>
+              <BoxEntry key={i} bg={ i == 0 ? 'selectionBlue' : 'secondaryBlue'} price={box.price} name={box.name} height={box.height} width={box.width} depth={box.depth}/>
             ))}
           </BoxResults>
       </MainLayout>
