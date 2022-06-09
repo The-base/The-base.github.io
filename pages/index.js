@@ -8,35 +8,47 @@ import BoxEntry from '../components/BoxEntry';
 
 
 const HomePage = () => {
-  const [height, setHeight] = React.useState('')
+  const [height, setHeight] = React.useState(12)
   const handleHeight = (event) => setHeight(event.target.value);
 
-  const [width, setWidth] = React.useState('')
+  const [width, setWidth] = React.useState(12)
   const handleWidth = (event) => setWidth(event.target.value);
 
-  const [depth, setDepth] = React.useState('')
+  const [depth, setDepth] = React.useState(12)
   const handleDepth = (event) => setDepth(event.target.value);
+  // const [biggerBoxes, setBiggerBoxes] = React.useState([]);
 
 
-  //  const SelectBoxes =  React.useEvent(() => {
 
-    let newBoxes = []
+    let biggerBoxes = []
 
-    Boxes.forEach((box) => {
-      // if (box.height >= height && box.width >= width && box.depth >= depth) {
-      //   newBox.push(box.name)
-      // }
-      if (box.height >= height && box.width >= width && box.depth >= depth) {
-        newBoxes.push([box.name, box.price, box.width, box.height, box.depth])
-      }
-    })
 
-    let limitResult = newBoxes.slice(0,3)
-    
-    console.log('limitResult', limitResult)
-    // })
 
+   
+
+    let finalBoxes = []
+
+
+ 
     const handleFind = () => {
+
+      let initialState =   {
+        "price": "$6.49",
+        "name": "14 Cube",
+        "depth": 0,
+        "width": 0,
+        "height": 0
+      };  
+
+
+      Boxes?.filter((box, i) => (
+        box.height >= height && box.width >= width && box.depth >= depth)).map((box, j) => {
+          biggerBoxes.push(box)
+        })
+        biggerBoxes.reduce((res, obj) => {
+          finalBoxes.push(obj.height < res.height && obj.width < res.width && obj.depth < res.depth) ? obj : res;
+      }, 0);
+      
 
     }
     const handleReset = () => {
@@ -56,9 +68,7 @@ const HomePage = () => {
             handleReset={handleReset}
           />
           <BoxResults>
-            {limitResult.flatMap((box, i) => (
-              <BoxEntry key={i} bg='selectionBlue' price={box.price} name={box.name} height={box.height} width={box.width} depth={box.depth}/>
-            ))}
+              <BoxEntry bg='selectionBlue' price={finalBoxes.price} name={finalBoxes.name} height={finalBoxes.height} width={finalBoxes.width} depth={finalBoxes.depth}/>
           </BoxResults>
       </MainLayout>
   )}
