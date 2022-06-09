@@ -3,7 +3,7 @@ import { Flex, Text, Button } from "@chakra-ui/react";
 
 const BoxEntry = ({bg, price, name, height, width, depth}) => {
 
-    const boxProps = [bg, price, name, height, width, depth]
+    const boxProps = [price, name, height, width, depth]
     const featureInputProps = {
         bg: 'white',
         color: '#000',
@@ -36,7 +36,7 @@ const BoxEntry = ({bg, price, name, height, width, depth}) => {
             bg={bg}
             {...buttonProps}
         >
-            <Flex>
+            <Flex bg={bg}>
                 {boxProps.map((feature, i) => (
                 <Flex {...featureInputProps} key={i}>
                     {feature}

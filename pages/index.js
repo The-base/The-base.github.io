@@ -22,6 +22,15 @@ const HomePage = () => {
 
     let biggerBoxes = []
 
+    Boxes.forEach((box) => {
+      // if (box.height >= height && box.width >= width && box.depth >= depth) {
+      //   newBox.push(box.name)
+      // }
+      if (box.height >= height && box.width >= width && box.depth >= depth) {
+        newBoxes.push(box)
+        // newBoxes.push([box.name, box.price, box.width, box.height, box.depth])
+      }
+    })
 
 
    
@@ -52,7 +61,9 @@ const HomePage = () => {
 
     }
     const handleReset = () => {
-
+      setHeight('')
+      setWidth('')
+      setDepth('')
     }
 
     return (
@@ -69,6 +80,9 @@ const HomePage = () => {
           />
           <BoxResults>
               <BoxEntry bg='selectionBlue' price={finalBoxes.price} name={finalBoxes.name} height={finalBoxes.height} width={finalBoxes.width} depth={finalBoxes.depth}/>
+            {limitResult.flatMap((box, i) => (
+              <BoxEntry key={i} bg={ i == 0 ? 'selectionBlue' : 'secondaryBlue'} price={box.price} name={box.name} height={box.height} width={box.width} depth={box.depth}/>
+            ))}
           </BoxResults>
       </MainLayout>
   )}
