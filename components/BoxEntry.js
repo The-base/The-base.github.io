@@ -2,6 +2,7 @@ import React from "react";
 import { Flex, Text, Button, Box } from "@chakra-ui/react";
 
 const BoxEntry = ({ bg, price, name, height, width, depth, noBox }) => {
+
     const featureInputProps = {
         bg: 'white',
         color: '#000',

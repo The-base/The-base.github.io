@@ -39,7 +39,6 @@ const findLowest = (myArray) => {
       finalBoxes.unshift(el)
     }
   })
-  // console.log('DKJFAKSHDFKJAHSFKDHAKJ', finalBoxes)
 }
 
 
@@ -63,10 +62,7 @@ const findLowest = (myArray) => {
       console.log('Dimensions', myHeight, myWidth, myDepth)
     setBiggerBoxes(myBoxes.slice(0, 3))
   }
-
-
-
-
+   
     const handleReset = () => {
       setHeight('')
       setWidth('')
