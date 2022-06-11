@@ -42,7 +42,6 @@ const findLowest = (myArray) => {
 }
 
 
-// findLowest(Boxes) 
  
    const handleFind = () => {
 
@@ -50,7 +49,6 @@ const findLowest = (myArray) => {
     myBoxes = Boxes.filter((box, i) => (
       box.height > height && box.width > width && box.depth > depth))
 
-      console.log('myBoxes', myBoxes.length)
       
       for (let i = 0; i < myBoxes.length; i++) {
         if (myBoxes[i].height < myHeight && myBoxes[i].width < myWidth && myBoxes[i].depth < myDepth) {
@@ -59,10 +57,12 @@ const findLowest = (myArray) => {
           myDepth = myBoxes[i].depth
       }}
       
-      console.log('Dimensions', myHeight, myWidth, myDepth)
     setBiggerBoxes(myBoxes.slice(0, 3))
   }
-   
+
+
+
+
     const handleReset = () => {
       setHeight('')
       setWidth('')
