@@ -8,13 +8,13 @@ import BoxEntry from '../components/BoxEntry';
 
 
 const HomePage = () => {
-  const [height, setHeight] = React.useState(200)
+  const [height, setHeight] = React.useState(0)
   const handleHeight = (event) => setHeight(event.target.value);
 
-  const [width, setWidth] = React.useState(200)
+  const [width, setWidth] = React.useState(0)
   const handleWidth = (event) => setWidth(event.target.value);
 
-  const [depth, setDepth] = React.useState(200)
+  const [depth, setDepth] = React.useState(0)
   const handleDepth = (event) => setDepth(event.target.value);
   const [biggerBoxes, setBiggerBoxes] = React.useState([]);
 
