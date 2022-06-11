@@ -21,13 +21,13 @@ const HomePage = () => {
 
    
 
-    let myBoxes = []
+  let myBoxes = []
 
-    const finalBoxes = []
+  const finalBoxes = []
 
-    let myHeight = 100
-    let myWidth = 100
-    let myDepth = 100
+  let myHeight = 100
+  let myWidth = 100
+  let myDepth = 100
   
 const findLowest = (myArray) => {
   myArray.forEach((el) => {
@@ -39,11 +39,11 @@ const findLowest = (myArray) => {
       finalBoxes.unshift(el)
     }
   })
-  console.log('DKJFAKSHDFKJAHSFKDHAKJ', finalBoxes)
+  // console.log('DKJFAKSHDFKJAHSFKDHAKJ', finalBoxes)
 }
 
 
-findLowest(Boxes)
+// findLowest(Boxes) 
  
    const handleFind = () => {
 
@@ -51,13 +51,17 @@ findLowest(Boxes)
     myBoxes = Boxes.filter((box, i) => (
       box.height > height && box.width > width && box.depth > depth))
 
-    if (myBoxes.height < myHeight && myBoxes.width < myWidth && myBoxes.depth < myDepth) {
-      myHeight = box.height
-      myWidth = box.width
-      myDepth = box.depth
-    }
-
-    setBiggerBoxes(myBoxes)
+      console.log('myBoxes', myBoxes.length)
+      
+      for (let i = 0; i < myBoxes.length; i++) {
+        if (myBoxes[i].height < myHeight && myBoxes[i].width < myWidth && myBoxes[i].depth < myDepth) {
+          myHeight = myBoxes[i].height
+          myWidth = myBoxes[i].width
+          myDepth = myBoxes[i].depth
+      }}
+      
+      console.log('Dimensions', myHeight, myWidth, myDepth)
+    setBiggerBoxes(myBoxes.slice(0, 3))
   }
 
 
@@ -90,6 +94,4 @@ findLowest(Boxes)
       </MainLayout>
   )}
   
-  export default HomePage
-
-
+  export default HomePage;
