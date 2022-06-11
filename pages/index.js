@@ -8,38 +8,61 @@ import BoxEntry from '../components/BoxEntry';
 
 
 const HomePage = () => {
-  const [height, setHeight] = React.useState('')
+  const [height, setHeight] = React.useState(200)
   const handleHeight = (event) => setHeight(event.target.value);
 
-  const [width, setWidth] = React.useState('')
+  const [width, setWidth] = React.useState(200)
   const handleWidth = (event) => setWidth(event.target.value);
 
-  const [depth, setDepth] = React.useState('')
+  const [depth, setDepth] = React.useState(200)
   const handleDepth = (event) => setDepth(event.target.value);
+  const [biggerBoxes, setBiggerBoxes] = React.useState([]);
 
 
-  //  const SelectBoxes =  React.useEvent(() => {
+   
 
-    let newBoxes = []
+  let myBoxes = []
 
-    Boxes.forEach((box) => {
-      // if (box.height >= height && box.width >= width && box.depth >= depth) {
-      //   newBox.push(box.name)
-      // }
-      if (box.height >= height && box.width >= width && box.depth >= depth) {
-        newBoxes.push(box)
-        // newBoxes.push([box.name, box.price, box.width, box.height, box.depth])
-      }
-    })
+  const finalBoxes = []
 
-    let limitResult = newBoxes.slice(0,3)
-    
-    console.log('limitResult', limitResult)
-    // })
+  let myHeight = 100
+  let myWidth = 100
+  let myDepth = 100
+  
+const findLowest = (myArray) => {
+  myArray.forEach((el) => {
+    if (el.height < myHeight && el.width < myWidth && el.depth < myDepth) {
+      myHeight = el.height
+      myWidth = el.width
+      myDepth = el.depth
 
-    const handleFind = () => {
-
+      finalBoxes.unshift(el)
     }
+  })
+}
+
+
+// findLowest(Boxes) 
+ 
+   const handleFind = () => {
+
+
+    myBoxes = Boxes.filter((box, i) => (
+      box.height > height && box.width > width && box.depth > depth))
+
+      console.log('myBoxes', myBoxes.length)
+      
+      for (let i = 0; i < myBoxes.length; i++) {
+        if (myBoxes[i].height < myHeight && myBoxes[i].width < myWidth && myBoxes[i].depth < myDepth) {
+          myHeight = myBoxes[i].height
+          myWidth = myBoxes[i].width
+          myDepth = myBoxes[i].depth
+      }}
+      
+      console.log('Dimensions', myHeight, myWidth, myDepth)
+    setBiggerBoxes(myBoxes.slice(0, 3))
+  }
+   
     const handleReset = () => {
       setHeight('')
       setWidth('')
@@ -58,14 +81,13 @@ const HomePage = () => {
             handleFind={handleFind}
             handleReset={handleReset}
           />
-          <BoxResults>
-            {limitResult.flatMap((box, i) => (
-              <BoxEntry key={i} bg={ i == 0 ? 'selectionBlue' : 'secondaryBlue'} price={box.price} name={box.name} height={box.height} width={box.width} depth={box.depth}/>
+          <BoxResults >
+            <BoxEntry bg='selectionBlue' price="Price" name="Name" height="Height" width="Width" depth="Depth" noBox/>
+          {biggerBoxes.map((box, i) => (
+            <BoxEntry key={i} bg='selectionBlue' price={box.price} name={box.name} height={box.height} width={box.width} depth={box.depth}/>
             ))}
           </BoxResults>
       </MainLayout>
   )}
   
-  export default HomePage
-
-
+  export default HomePage;

@@ -1,9 +1,8 @@
 import React from "react";
-import { Flex, Text, Button } from "@chakra-ui/react";
+import { Flex, Text, Button, Box } from "@chakra-ui/react";
 
-const BoxEntry = ({bg, price, name, height, width, depth}) => {
+const BoxEntry = ({ bg, price, name, height, width, depth, noBox }) => {
 
-    const boxProps = [price, name, height, width, depth]
     const featureInputProps = {
         bg: 'white',
         color: '#000',
@@ -12,6 +11,9 @@ const BoxEntry = ({bg, price, name, height, width, depth}) => {
         fontWeight: '400',
         marginRight: '8px',
         borderRadius: '8px',
+        w: '100px',
+        align: 'center',
+        justifyContent: 'center',
     };
 
     const buttonProps = {
@@ -36,19 +38,31 @@ const BoxEntry = ({bg, price, name, height, width, depth}) => {
             bg={bg}
             {...buttonProps}
         >
-            <Flex bg={bg}>
-                {boxProps.map((feature, i) => (
-                <Flex {...featureInputProps} key={i}>
-                    {feature}
+            <Flex>
+                <Flex {...featureInputProps}>
+                    {price}
                 </Flex>
-                ))}
+                <Flex {...featureInputProps}>
+                    {name}
+                </Flex>
+                <Flex {...featureInputProps}>
+                    {height}
+                </Flex>
+                <Flex {...featureInputProps}>
+                    {width}
+                </Flex>
+                <Flex {...featureInputProps}>
+                    {depth}
+                </Flex>
             </Flex>
-            <Text 
+
+                <Text 
                 fontSize='16px'
                 fontWeight='400'
                 marginLeft='32px'
-            >
-                UPS Box
+                pr={noBox && '62px'}
+                >
+                {!noBox ? 'UPS Box' : ''}
             </Text>
         </Button>
     )

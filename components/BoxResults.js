@@ -13,6 +13,8 @@ const BoxResults = ({ children }) => {
             margin='16px'
             padding='10px'
             direction='column'
+            minW="800px"
+            maxW="1000px"
         >
             {children}
         </Flex>
